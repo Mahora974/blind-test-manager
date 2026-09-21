@@ -7,10 +7,11 @@
   "type": "commonjs",
   "main": "main.js",
   "scripts": {
-    "start": "electron-forge start",
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "build:css": "tailwindcss -i src/input.css -o public/output.css"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.11.2",
@@ -21,9 +22,12 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.11.2",
     "@electron-forge/plugin-fuses": "^7.11.2",
     "@electron/fuses": "^1.8.0",
+    "daisyui": "^5.7.42",
     "electron": "^44.4.3"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1"
+    "@tailwindcss/cli": "^4.3.3",
+    "electron-squirrel-startup": "^1.0.1",
+    "tailwindcss": "^4.3.3"
   }
 }
