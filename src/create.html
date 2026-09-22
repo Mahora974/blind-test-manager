@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <link rel="stylesheet" type="text/css" href="../public/output.css" />
+  </head>
+  <body>
+    <section class="p-8 grid grid-cols-3 border-b-4 border-purple-500">
+      <a href="index.html"><button class="btn">Retour à l'accueil</button></a>
+      <h1 class="span-2 text-3xl text-center">Créer un blind test</h1>
+    </section>
+    <section class="grid grid-cols-3">
+      <form
+        class="flex flex-col p-4 col-start-2"
+        name="createForm"
+        id="createForm"
+      >
+        <label class="input m-2">
+          <span class="label">Titre</span>
+          <input id="title" name="title" type="text" placeholder="Titre" />
+        </label>
+        <label class="input m-2">
+          <span class="label">Jour de l'animation</span>
+          <input id="d_day" name="d_day" type="date" />
+        </label>
+        <input
+          type="submit"
+          class="btn btn-md btn-secondary m-2"
+          value="C'est parti !"
+        />
+      </form>
+    </section>
+    <script src="../renderer.js"></script>
+  </body>
+</html>

@@ -7,13 +7,9 @@
       content="default-src 'self'; script-src 'self'"
     />
     <link rel="stylesheet" type="text/css" href="../public/output.css" />
+    <script src="../renderer.js"></script>
   </head>
   <body>
-    <div class="navbar bg-base-100 shadow-sm">
-      <div class="flex-1">
-        <a class="btn btn-ghost text-xl">Blind Test Manager</a>
-      </div>
-    </div>
     <section class="p-8 border-b-4 border-purple-500">
       <h1 class="text-5xl m-4">Bienvenue Mahora !</h1>
       <h2 class="text-3xl m-4">Que faire aujourd'hui ?</h2>
@@ -24,7 +20,9 @@
           <h2 class="card-title">Créer un Blind Test</h2>
           <p>Commencer un nouveau blind test</p>
           <div class="justify-end card-actions">
-            <button class="btn btn-primary">Let's Go !</button>
+            <a href="create.html"
+              ><button class="btn btn-primary">Let's Go !</button></a
+            >
           </div>
         </div>
       </div>

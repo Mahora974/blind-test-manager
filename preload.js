@@ -4,6 +4,9 @@ contextBridge.exposeInMainWorld('versions', {
   node: () => process.versions.node,
   chrome: () => process.versions.chrome,
   electron: () => process.versions.electron,
-  ping: () => ipcRenderer.invoke('ping')
-  // we can also expose variables, not just functions
 })
+
+contextBridge.exposeInMainWorld('api', {
+  getBlindTests: () => ipcRenderer.invoke('get-blind-tests'),
+  addBlindTest: (title, d_day) => ipcRenderer.invoke('add-blind-test', title, d_day),
+});

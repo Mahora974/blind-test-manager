@@ -1,8 +1,8 @@
-const information = document.getElementById('info')
-information.innerText = `This app is using Chrome (v${window.versions.chrome()}), Node.js (v${window.versions.node()}), and Electron (v${window.versions.electron()})`
-const func = async () => {
-  const response = await window.versions.ping()
-  console.log(response) // prints out 'pong'
-}
+document.getElementById('createForm').addEventListener('submit', sendCreateForm);
 
-func()
+function sendCreateForm(event) {
+  event.preventDefault();
+  let title = document.getElementById("title").value;
+  let d_day = document.getElementById("d_day").value;
+  window.api.addBlindTest(title, d_day);
+}
