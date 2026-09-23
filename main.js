@@ -25,7 +25,6 @@ const createWindow = () => {
   })
 
   win.loadFile('src/index.html')
-  win.webContents.openDevTools();
 }
 
 app.whenReady().then(async () => {
@@ -46,7 +45,9 @@ app.on('window-all-closed', () => {
 })
 
 ipcMain.handle('get-blind-tests', async () => {
-  const [rows] = await pool.query('SELECT * FROM blind_tests');
+  const [rows] = await pool.query('SELECT * FROM blind_tests WHERE `d_day` >= ? ORDER BY `d_day`',
+    new Date().toJSON()
+  );
   return rows;
 });
 
@@ -56,6 +57,14 @@ ipcMain.handle('add-blind-test', async (event, title, d_day) => {
     [title, d_day]
   );
   return result.insertId;
+});
+
+ipcMain.handle('get-blind-test', async (event, id) => {
+  const [result] = await pool.query(
+    'SELECT * FROM blind_tests LEFT JOIN rounds ON rounds.test_id = blind_tests.id LEFT JOIN categories ON categories.id = rounds.id WHERE blind_tests.id = ?',
+    [id]
+  );
+  return result;
 });
 
 

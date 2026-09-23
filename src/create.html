@@ -21,11 +21,17 @@
       >
         <label class="input m-2">
           <span class="label">Titre</span>
-          <input id="title" name="title" type="text" placeholder="Titre" />
+          <input
+            id="title"
+            name="title"
+            type="text"
+            placeholder="Titre"
+            required
+          />
         </label>
         <label class="input m-2">
           <span class="label">Jour de l'animation</span>
-          <input id="d_day" name="d_day" type="date" />
+          <input id="d_day" name="d_day" type="date" required />
         </label>
         <input
           type="submit"
@@ -35,5 +41,6 @@
       </form>
     </section>
     <script src="../renderer.js"></script>
+    <script src="create.js"></script>
   </body>
 </html>

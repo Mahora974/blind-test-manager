@@ -7,7 +7,6 @@
       content="default-src 'self'; script-src 'self'"
     />
     <link rel="stylesheet" type="text/css" href="../public/output.css" />
-    <script src="../renderer.js"></script>
   </head>
   <body>
     <section class="p-8 border-b-4 border-purple-500">
@@ -31,7 +30,20 @@
           <h2 class="card-title">Modifier un Blind Test</h2>
           <p>Ajouter des chanson, ajuster les points par manche, tester...</p>
           <div class="justify-end card-actions">
-            <button class="btn btn-primary">Let's Go !</button>
+            <form
+              class="flex flex-col p-4 col-start-2"
+              name="selectModifyForm"
+              id="selectModifyForm"
+            >
+              <select class="select" id="tests" required>
+                <option disabled selected>Choisir un Blind Test</option>
+              </select>
+              <input
+                type="submit"
+                class="btn btn-md btn-secondary m-2"
+                value="Let's Go !"
+              />
+            </form>
           </div>
         </div>
       </div>
@@ -48,5 +60,6 @@
         </div>
       </div>
     </section>
+    <script src="../renderer.js"></script>
   </body>
 </html>

@@ -9,4 +9,5 @@ contextBridge.exposeInMainWorld('versions', {
 contextBridge.exposeInMainWorld('api', {
   getBlindTests: () => ipcRenderer.invoke('get-blind-tests'),
   addBlindTest: (title, d_day) => ipcRenderer.invoke('add-blind-test', title, d_day),
+  getBlindTest: (id) => ipcRenderer.invoke('get-blind-test', id)
 });

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <link rel="stylesheet" type="text/css" href="../public/output.css" />
+  </head>
+  <body>
+    <section class="p-8 grid grid-cols-3 border-b-4 border-purple-500">
+      <a href="index.html"><button class="btn">Retour à l'accueil</button></a>
+      <h1 class="span-2 text-3xl text-center">
+        Modifier le blind test "<span id="title"></span>""
+      </h1>
+    </section>
+    <section class="flex flex-col">
+      <h2 class="text-center p-2 text-xl">Manches</h2>
+
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Catégorie</th>
+              <th>Points</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rounds"></tbody>
+        </table>
+      </div>
+    </section>
+    <script src="../renderer.js"></script>
+    <script src="modify.js"></script>
+  </body>
+</html>

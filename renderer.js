@@ -1,8 +1,24 @@
-document.getElementById('createForm').addEventListener('submit', sendCreateForm);
+async function getTests() {
+  let options = document.getElementById('tests').getHTML()
+  const blindTests = await window.api.getBlindTests();
+  blindTests.forEach(blindTest => {
+    let day = new Date(blindTest.d_day)
+    options += `<option value="${blindTest.id}"> ${blindTest.title} (${day.toLocaleDateString()})</option>`;
+  });
+  document.getElementById('tests').innerHTML = options
+}
 
-function sendCreateForm(event) {
+if (document.getElementById('tests')){
+  getTests()
+}
+
+
+if (document.getElementById('selectModifyForm')){
+  document.getElementById('selectModifyForm').addEventListener('submit', sendSelectModifyForm);
+}
+
+async function sendSelectModifyForm(event) {
   event.preventDefault();
-  let title = document.getElementById("title").value;
-  let d_day = document.getElementById("d_day").value;
-  window.api.addBlindTest(title, d_day);
+  let id = document.getElementById("tests").value;
+  window.location.href = `modify.html?id=${id}`;
 }
