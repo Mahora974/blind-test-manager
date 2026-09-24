@@ -20,5 +20,5 @@ if (document.getElementById('selectModifyForm')){
 async function sendSelectModifyForm(event) {
   event.preventDefault();
   let id = document.getElementById("tests").value;
-  window.location.href = `modify.html?id=${id}`;
+  window.location.href = `blind-tests/modify.html?id=${id}`;
 }

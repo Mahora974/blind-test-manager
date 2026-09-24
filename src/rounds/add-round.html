@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <link rel="stylesheet" type="text/css" href="../../public/output.css" />
+  </head>
+  <body>
+    <section class="p-8 grid grid-cols-3 border-b-4 border-purple-500">
+      <a href="../index.html"
+        ><button class="btn">Retour à l'accueil</button></a
+      >
+      <h1 class="span-2 text-3xl text-center">Modifier la manche</h1>
+    </section>
+    <section class="flex flex-col">
+      <form
+        class="flex flex-col p-4 col-start-2"
+        name="createRoundForm"
+        id="createRoundForm"
+      >
+        <label class="input m-2">
+          <select class="select" id="category_id" required>
+            <option disabled selected>Choisir une catégorie</option>
+          </select>
+        </label>
+        <label class="input m-2">
+          <span class="label">Ordre</span>
+          <input id="order" name="order" type="number" required />
+        </label>
+        <label class="input m-2">
+          <span class="label">Points à gagner</span>
+          <input
+            id="points"
+            name="points"
+            type="number"
+            placeholder="1"
+            required
+          />
+        </label>
+        <label class="input m-2">
+          <span class="label">Réponse</span>
+          <input
+            id="answer"
+            name="answer"
+            type="text"
+            placeholder="Single Ladies - Beyoncé"
+            required
+          />
+        </label>
+        <input
+          type="submit"
+          class="btn btn-md btn-secondary m-2"
+          value="Sauvegarder"
+        />
+      </form>
+    </section>
+    <section class="flex flex-col">
+      <h2 class="text-center p-2 text-xl">Extraits</h2>
+
+      <button id="addRound">Ajouter</button>
+
+      <div class="overflow-x-auto">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Chemin</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="songs"></tbody>
+        </table>
+      </div>
+    </section>
+    <script src="../renderer.js"></script>
+    <script src="js/add-round.js"></script>
+  </body>
+</html>

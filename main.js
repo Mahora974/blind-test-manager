@@ -61,10 +61,33 @@ ipcMain.handle('add-blind-test', async (event, title, d_day) => {
 
 ipcMain.handle('get-blind-test', async (event, id) => {
   const [result] = await pool.query(
-    'SELECT * FROM blind_tests LEFT JOIN rounds ON rounds.test_id = blind_tests.id LEFT JOIN categories ON categories.id = rounds.id WHERE blind_tests.id = ?',
+    'SELECT * FROM blind_tests LEFT JOIN rounds ON rounds.test_id = blind_tests.id LEFT JOIN categories ON categories.id = rounds.category_id WHERE blind_tests.id = ? ORDER BY rounds.order',
     [id]
   );
   return result;
 });
 
 
+ipcMain.handle('get-categories', async (event) => {
+  const [result] = await pool.query(
+    'SELECT * FROM categories',
+  );
+  return result;
+});
+
+
+ipcMain.handle('get-round', async (event,id) => {
+  const [result] = await pool.query(
+    'SELECT * FROM rounds LEFT JOIN extracts ON rounds.id = extracts.round_id WHERE round.id = ? ORDER BY extracts.order',
+    [id]
+  );
+  return result;
+});
+
+ipcMain.handle('add-round', async (event, order, answer, points, category_id, test_id) => {
+  const [result] = await pool.query(
+    'INSERT INTO rounds (rounds.order, answer, points, category_id, test_id) VALUES (?, ?, ?, ?, ?)',
+    [order, answer, points, category_id, test_id]
+  );
+  return result.insertId;
+});
