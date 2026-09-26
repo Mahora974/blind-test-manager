@@ -86,7 +86,7 @@ ipcMain.handle('get-categories', async (event) => {
 
 ipcMain.handle('get-round', async (event,id) => {
   const [result] = await pool.query(
-    'SELECT * FROM rounds LEFT JOIN extracts ON rounds.id = extracts.round_id WHERE round.id = ? ORDER BY extracts.order',
+    'SELECT rounds.id, rounds.points AS round_points, rounds.order AS round_order, answer, test_id, category_id, extracts.id AS extract_id, extracts.order AS extract_order, extracts.file_track FROM rounds LEFT JOIN extracts ON rounds.id = extracts.round_id WHERE rounds.id = ? ORDER BY extracts.order',
     [id]
   );
   return result;
@@ -96,6 +96,14 @@ ipcMain.handle('add-round', async (event, order, answer, points, category_id, te
   const [result] = await pool.query(
     'INSERT INTO rounds (rounds.order, answer, points, category_id, test_id) VALUES (?, ?, ?, ?, ?)',
     [order, answer, points, category_id, test_id]
+  );
+  return result.insertId;
+});
+
+ipcMain.handle('modify-round', async (event, id, order, answer, points, category_id) => {
+  const [result] = await pool.query(
+    'UPDATE rounds SET rounds.order = ?, answer = ?, points = ?, category_id = ? WHERE id = ?',
+    [order, answer, points, category_id, id]
   );
   return result.insertId;
 });
