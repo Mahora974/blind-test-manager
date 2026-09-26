@@ -23,7 +23,6 @@ async function getRound(){
   document.getElementById('songs').innerHTML = extracts
   if (action == "add"){
     document.getElementById('order').value = Number(order)
-    console.log(document.getElementById('order'))
   } else if (action == "modify") {
     const round = await window.api.getRound(id);
     document.getElementById('category').value = round[0].name
@@ -53,6 +52,5 @@ async function addRound(event) {
   let points = document.getElementById("points").value;
   if (action == "add") {
     await window.api.addRound(order, answer, points, category_id, id)
-    console.log("success ?")
   }
 }

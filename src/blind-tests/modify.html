@@ -20,21 +20,27 @@
     <section class="flex flex-col">
       <form
         class="flex flex-col p-4 col-start-2"
-        name="createForm"
-        id="createForm"
+        name="modifyForm"
+        id="modifyForm"
       >
         <label class="input m-2">
           <span class="label">Titre</span>
-          <input id="title" name="title" type="text" placeholder="Titre" />
+          <input
+            id="title"
+            name="title"
+            type="text"
+            placeholder="Titre"
+            require
+          />
         </label>
         <label class="input m-2">
           <span class="label">Jour de l'animation</span>
-          <input id="d_day" name="d_day" type="date" />
+          <input id="d_day" name="d_day" type="date" require />
         </label>
         <input
           type="submit"
           class="btn btn-md btn-secondary m-2"
-          value="C'est parti !"
+          value="Sauvegarder"
         />
       </form>
     </section>

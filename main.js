@@ -59,6 +59,14 @@ ipcMain.handle('add-blind-test', async (event, title, d_day) => {
   return result.insertId;
 });
 
+ipcMain.handle('modify-blind-test', async (event, id, title, d_day) => {
+  const [result] = await pool.query(
+    'UPDATE blind_tests SET title = ?, d_day = ? WHERE id = ?',
+    [title, d_day, id]
+  );
+  return result.insertId;
+});
+
 ipcMain.handle('get-blind-test', async (event, id) => {
   const [result] = await pool.query(
     'SELECT * FROM blind_tests LEFT JOIN rounds ON rounds.test_id = blind_tests.id LEFT JOIN categories ON categories.id = rounds.category_id WHERE blind_tests.id = ? ORDER BY rounds.order',
