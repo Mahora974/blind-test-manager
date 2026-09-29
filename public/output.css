@@ -1211,6 +1211,14 @@
   .table {
     display: table;
   }
+  @layer daisyui.l1.l2 {
+    .btn-circle {
+      border-radius: calc(infinity * 1px);
+      padding-inline: 0px;
+      width: var(--size);
+      height: var(--size);
+    }
+  }
   .w-96 {
     width: calc(var(--spacing) * 96);
   }

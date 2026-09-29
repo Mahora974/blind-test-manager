@@ -1,4 +1,4 @@
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('versions', {
   node: () => process.versions.node,
@@ -15,4 +15,5 @@ contextBridge.exposeInMainWorld('api', {
   getRound: (id) => ipcRenderer.invoke('get-round', id),
   addRound: (order, answer, points, category_id, test_id) => ipcRenderer.invoke('add-round', order, answer, points, category_id, test_id),
   modifyRound: (id, order, answer, points, category_id) => ipcRenderer.invoke('modify-round',id, order, answer, points, category_id),
+  modifyExtract: (id, order, file_track) => ipcRenderer.invoke('modify-extract',id, order, file_track),
 });

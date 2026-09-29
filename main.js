@@ -107,3 +107,11 @@ ipcMain.handle('modify-round', async (event, id, order, answer, points, category
   );
   return result.insertId;
 });
+
+ipcMain.handle('modify-extract', async (event, id, order, file_track) => {
+  const [result] = await pool.query(
+    'UPDATE extracts SET extracts.order = ?, file_track = ? WHERE id = ?',
+    [order, file_track, id]
+  );
+  return result.insertId;
+});
